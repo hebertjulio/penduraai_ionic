@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Account</ion-title>
+    <app-qr-scanner slot="end"></app-qr-scanner>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="user && profile">
+    <ion-list lines="full">
+      <ion-list-header class="ion-no-padding">
+        <div class="user-avatar">
+          <ion-avatar>
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-avatar>
+        </div>
+      </ion-list-header>
+      <ion-item>
+        <ion-label class="ion-text-center">
+          {{user.name}}
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-center">
+          {{user.email}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list lines="full">
+      <ion-list-header class="ion-no-padding">
+        <ion-label class="ion-text-center">
+          Profile Current
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label class="ion-text-center">
+          {{profile.name}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" (click)="openUserEdit(user)">User Edit</ion-button>
+    <ion-button expand="block">Change PIN</ion-button>
+    <ion-button expand="block" (click)="goTo('profile-list')">Profiles</ion-button>
+    <ion-button expand="block" (click)="goTo('settings')">Settings</ion-button>
+  </div>
+</ion-content>

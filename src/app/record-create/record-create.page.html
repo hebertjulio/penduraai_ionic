@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="operation == 'credit'">New Payment</ion-title>
+    <ion-title *ngIf="operation == 'debt'">New Sale</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="operation">
+  <form [formGroup]="form" (ngSubmit)="newRecord(operation)" class="ion-padding" novalidate>
+    <app-error field="non_field_errors" [error]="error" ></app-error>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">
+          Value<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input type="number" formControlName="value"></ion-input>
+      </ion-item>
+      <app-error field="value" [error]="error" ></app-error>
+      <ion-item>
+        <ion-label position="floating">
+          Note
+        </ion-label>
+        <ion-textarea formControlName="note"></ion-textarea>
+      </ion-item>
+      <app-error field="note" [error]="error" ></app-error>
+    </ion-list>
+    <ion-button expand="block" type="submit" [disabled]="!form.valid">Create</ion-button>
+  </form>
+</ion-content>

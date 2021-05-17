@@ -1,0 +1,41 @@
+<div class="modal-content">
+  <ion-list lines="none">
+    <ion-item class="ion-text-center">
+      <ion-label class="ion-no-margin">
+        <ion-text color="medium">
+          <small>{{record.created|date:"short"}}</small>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item class="ion-text-center">
+      <ion-label class="ion-no-margin">
+        <ion-text color="medium">
+          <small>{{record.note}}</small>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item class="ion-text-center">
+      <ion-label>{{record.sheet.merchant.name}}</ion-label>
+    </ion-item>
+    <ion-item class="ion-text-center">
+      <ion-label>
+        <ion-text *ngIf="record.operation == 'credit'" color="success">R$ {{record.value}}</ion-text>
+        <ion-text *ngIf="record.operation == 'debt'" color="danger">R$ {{record.value}}</ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item class="ion-text-center">
+      <ion-label>
+        <ion-text color="medium">
+          <small>Attendant: {{record.attendant.name}}</small>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item class="ion-text-center">
+      <ion-label>
+        <ion-text color="medium">
+          <small>Signatary: {{record.signatary.name}}</small>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</div>

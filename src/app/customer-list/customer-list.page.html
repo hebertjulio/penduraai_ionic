@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Customer List</ion-title>
+    <app-qr-scanner slot="end"></app-qr-scanner>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refreshData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list lines="full">
+    <ion-item *ngFor="let sheet of sheetList" button (click)="showRecords(sheet)">
+      <ion-avatar>
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="text-medium">
+              <ion-text class="ion-text-wrap">
+                {{sheet.customer.name}}
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="text-medium">
+              <ion-text *ngIf="sheet.balance >= 0" color="success">
+                R$ {{sheet.balance}}
+              </ion-text>
+              <ion-text *ngIf="sheet.balance < 0" color="danger">
+                R$ {{sheet.balance}}
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end">
+  <ion-fab-button (click)="newCustomer()">
+    <ion-icon name="person-add-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -1,0 +1,5 @@
+<div *ngIf="field && error">
+  <ion-text color="danger" *ngFor="let message of error.messages[field]">
+    {{ message }}
+  </ion-text>
+</div>

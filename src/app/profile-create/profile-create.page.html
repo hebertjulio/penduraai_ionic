@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">
+          Role<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-select placeholder="Select One" formControlName="role">
+          <ion-select-option *ngFor="let role of roleList" value="{{role.id}}">
+            {{role.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" type="submit" [disabled]="!form.valid">Request</ion-button>
+  </form>
+</ion-content>

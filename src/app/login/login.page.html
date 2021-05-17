@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" class="ion-padding" (ngSubmit)="doLogin()" novalidate>
+    <app-error field="non_field_errors" [error]="error" ></app-error>
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label position="floating">
+          E-mail<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <app-error field="email" [error]="error" ></app-error>
+      <ion-item>
+        <ion-label position="floating">
+          Password<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" type="submit" [disabled]="!form.valid">
+      Enter
+    </ion-button>
+  </form>
+  <div class="ion-padding">
+    <ion-router-link href="/sign-up">
+      Sign-Up
+    </ion-router-link>
+    <ion-router-link class="ion-float-end" href="/password-reset">
+      Password Reset
+    </ion-router-link>
+  </div>
+</ion-content>

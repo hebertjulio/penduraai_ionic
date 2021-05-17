@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sign-Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="submitForm()" class="ion-padding" novalidate>
+    <app-error field="non_field_errors" [error]="error" ></app-error>
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label position="floating">
+          Name<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <app-error field="name" [error]="error" ></app-error>
+      <ion-item>
+        <ion-label position="floating">
+          E-Mail<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <app-error field="email" [error]="error" ></app-error>
+      <ion-item>
+        <ion-label position="floating">
+          Password<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <app-error field="password" [error]="error" ></app-error>
+      <ion-item>
+        <ion-label position="floating">
+          Password Confirm<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="password_confirm" type="password"></ion-input>
+      </ion-item>
+      <app-error field="password_confirm" [error]="error" ></app-error>
+      <ion-item>
+        <ion-label position="floating">
+          PIN<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input formControlName="pin" type="number"></ion-input>
+      </ion-item>
+      <app-error field="pin" [error]="error" ></app-error>
+    </ion-list>
+    <ion-button expand="block" type="submit" [disabled]="!form.valid">
+      Register
+    </ion-button>
+  </form>
+  <div class="ion-padding">
+    <ion-router-link href="/login">
+      Login
+    </ion-router-link>
+    <ion-router-link class="ion-float-end" href="/password-reset">
+      Password Reset
+    </ion-router-link>
+  </div>
+</ion-content>
